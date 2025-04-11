@@ -10,7 +10,7 @@ create table users(
 	email		varchar(64),
     password  	varchar(34),
     telephone 	varchar(11),
-	typeUser	enum('admin', 'comum')
+	typeUser	enum('admin', 'comum') default "comum"
 );
 
 create table movies(
