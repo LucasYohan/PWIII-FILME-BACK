@@ -7,16 +7,15 @@ const route = express.Router();
 //FAZER LOGIN
 
 route.post('/', async (req, res) => {
-  const { name, password } = req.body;
+  const { username, password } = req.body;
 
-  const user = await db.login(name, password);
+  const user = await db.login(username, password);
 
   if (!user) {
     return res.status(401).send({ message: 'Usuário ou senha inválidos.' });
   }
 
-  // Gerando o token incluindo o tipo de usuário
-  const token = generatedToken(user.id_user, user.name, user.typeUser);
+  const token = generatedToken(user.id_user, user.username, user.typeUser);
 
   return res.status(200).send({ token, typeUser: user.typeUser });
 });

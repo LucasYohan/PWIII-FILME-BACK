@@ -1,10 +1,10 @@
 import dataBase from "../repository/mysql.js";
 
-async function login(name, password) {
+async function login(username, password) {
 
-  const sql = "SELECT id_user, name, typeUser FROM users WHERE name = ? AND password = ?";
+  const sql = "SELECT id_user, username, typeUser FROM users WHERE username = ? AND password = ?";
   
-  const dataLogin = [name, password];
+  const dataLogin = [username, password];
 
   const conn = await dataBase.connectDB();
   const [rows] = await conn.query(sql, dataLogin);
