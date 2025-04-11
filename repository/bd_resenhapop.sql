@@ -13,6 +13,10 @@ create table users(
 	typeUser	enum('admin', 'comum') default "comum"
 );
 
+insert into users (name, surname, username, email, password, telephone) values ("Lucas", "Yohan", "Lusca", "lucas@gmail.com", 123123, 11962870960);
+
+select * from users;
+
 create table movies(
 	id_movie 		int auto_increment primary key,
 	name_movie 		varchar(64),

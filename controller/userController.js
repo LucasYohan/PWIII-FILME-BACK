@@ -30,7 +30,7 @@ route.get("/Get", async (request, response) => {
 //POST
 
 
-route.post("/Post", verifyUserType("admin"), async (req, res) => {
+route.post("/Post", async (req, res) => {
     const { name, surname, username, email, password, telephone } = req.body;
 
 
