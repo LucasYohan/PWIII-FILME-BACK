@@ -3,7 +3,7 @@ use bd_resenhapop;
 drop database bd_resenhapop;
 
 create table users(
-	id_users  	int auto_increment primary key,
+	id_user  	int auto_increment primary key,
     name 	  	varchar(64),
     surname		varchar(64),
 	username  	varchar(64),
@@ -13,9 +13,7 @@ create table users(
 	typeUser	enum('admin', 'comum') default "comum"
 );
 
-insert into users (name, surname, username, email, password, telephone) values ("Lucas", "Yohan", "Lusca", "lucas@gmail.com", 123123, 11962870960);
-
-select * from users;
+select * from users;	
 
 create table movies(
 	id_movie 		int auto_increment primary key,

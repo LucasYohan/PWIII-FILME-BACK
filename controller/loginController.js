@@ -11,13 +11,12 @@ route.post('/', async (req, res) => {
 
   const user = await db.login(username, password);
 
+  console.log(user)
+
   if (!user) {
     return res.status(401).send({ message: 'Usuário ou senha inválidos.' });
   }
 
-  const token = generatedToken(user.id_user, user.username, user.typeUser);
-
-  return res.status(200).send({ token, typeUser: user.typeUser });
 });
 
 //RECUPERAR SENHA
