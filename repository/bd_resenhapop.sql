@@ -13,7 +13,7 @@ create table users(
 	typeUser	enum('admin', 'comum') default "comum"
 );
 
-select * from users;	
+select * from users;
 
 create table movies(
 	id_movie 		int auto_increment primary key,

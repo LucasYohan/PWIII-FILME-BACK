@@ -17,6 +17,9 @@ route.post('/', async (req, res) => {
     return res.status(401).send({ message: 'Usuário ou senha inválidos.' });
   }
 
+
+  return res.status(200).send({ typeUser: user.typeUser });
+
 });
 
 //RECUPERAR SENHA
