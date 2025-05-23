@@ -23,8 +23,21 @@ create table movies(
 	gender_movie	enum('ação', 'comédia', 'drama', 'terror', 'suspense', 'ficção_cientifica'),
 	age_range		enum('livre', '10', '12', '14', '16', '18'),
 	main_actor		varchar(64),
-	synopsis		varchar(300)
+	synopsis		varchar(300),
+    imagem VARCHAR(100)
 );
+
+insert into movies (name_movie, director, release_date, gender_movie, age_range, main_actor, synopsis) values ("teste", "teste", now(), "drama", "livre", "teste", "teste");
+
+INSERT INTO movies (
+  name_movie, director, release_date, gender_movie, age_range, main_actor, synopsis, imagem
+) VALUES (
+  'Batman', 'Christopher Nolan', '2008-07-18', 'ação', '12', 'Christian Bale',
+  'Batman enfrenta o Coringa em Gotham City.',
+  'batman.jpg'
+);
+
+select * from movies;
 
 create table review(
 	id_review 		int auto_increment primary key,
