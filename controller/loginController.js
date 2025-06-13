@@ -1,6 +1,6 @@
 import express from "express";
 import db from "../service/loginService.js"
-import { generatePassword, generatedToken } from "../helpers/loginActions.js";
+import { generatedToken } from "../helpers/loginActions.js";
 
 const route = express.Router();
 
@@ -8,44 +8,16 @@ const route = express.Router();
 
 route.post('/', async (req, res) => {
   const { username, password } = req.body;
-
   const user = await db.login(username, password);
-
-  console.log(user)
 
   if (!user) {
     return res.status(401).send({ message: 'Usuário ou senha inválidos.' });
   }
 
+  const token = generatedToken(user.typeUser, user.id_user, user.username);
 
-  return res.status(200).send({ typeUser: user.typeUser });
-
+  return res.status(200).send({ token, typeUser: user.typeUser, id_user: user.id_user, username: user.username});
 });
 
-//RECUPERAR SENHA
-
-route.post("/reset", async (req, res) => {
-
-  const { name } = req.body;
-
-  try {
-    const user = await db.checkEmail(name);
-
-    if (user.length > 0) {
-
-      const newPassword = generatePassword();
-
-      await db.changePassword(name, newPassword);
-
-      res.status(200).send({ message: `Nova senha: ${newPassword}` });
-
-    } else res.status(404).send({ message: "Usuario nao encontrado" });
-
-  } catch (err) {
-
-    res.send({ message: `Houve um erro no banco de dados. ${err}` });
-
-  }
-});
 
 export default route;
